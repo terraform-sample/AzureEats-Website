@@ -21,10 +21,12 @@ jobs:
         dotnet-version: '2.1.804'
 
     - name: Build with dotnet
+      working-directory: Source/Tailwind.Traders.Web
       run: dotnet build --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      working-directory: Source/Tailwind.Traders.Web
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/Source/Tailwind.Traders.Web
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
